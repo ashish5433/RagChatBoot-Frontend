@@ -45,7 +45,10 @@ body {
 }
 
 @media (max-width: 920px) {
-  .chat-container { width:100vw; height:100vh; border-radius:0; }
+  .chat-container { 
+      width:100vw;
+      height:100vh;
+      border-radius:0; }
 }
 
 .chat-header {
@@ -269,8 +272,17 @@ body {
 }
 
 .input-footer-container {
-  padding:14px 18px; border-top:1px solid rgba(255,255,255,0.02); background: linear-gradient(180deg, rgba(255,255,255,0.006), rgba(255,255,255,0.01)); flex-shrink:0;
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 14px 18px;
+  border-top: 1px solid rgba(255,255,255,0.02);
+  background: linear-gradient(180deg, rgba(255,255,255,0.006), rgba(255,255,255,0.01));
+  flex-shrink: 0;
+  z-index: 10; 
 }
+
 .input-area { display:flex; gap:10px; align-items:center; height:56px;
   input {
     flex:1 1 auto; border:1px solid rgba(255,255,255,0.04); background: rgba(255,255,255,0.02); border-radius:10px; padding:12px 14px; font-size:1rem; color:$text-primary; min-width:0;
