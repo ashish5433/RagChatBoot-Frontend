@@ -97,4 +97,6 @@ Frontend/
 ## 🖼️ Demo
 
 ### Chat Interface
-![Chat UI Demo](./screenshots/chat-ui.png)
+![Chat UI Demo]<img width="1375" height="836" alt="image" src="https://github.com/user-attachments/assets/8dc1358e-55f2-45a1-8796-8af516b72c1a" />
+<img width="1668" height="967" alt="image" src="https://github.com/user-attachments/assets/2a5b2b13-f3f1-45a1-ba46-c3f1a7d1d32f" />
+
