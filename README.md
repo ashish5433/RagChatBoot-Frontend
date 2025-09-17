@@ -1,12 +1,98 @@
-# React + Vite
+## RAG BASED AI CHAT BOT - FRONTEND
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Frontend interface for the chatbot built with **Vite + React**.  
+It connects with the backend, provides a chat-like UI, and manages sessions to deliver conversational experience.
 
-Currently, two official plugins are available:
+## Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This project provides the **frontend interface** for the Retrieval-Augmented Generation (RAG) news application.  
+It is designed around a chat UI that interacts with the backend APIs.
 
-## Expanding the ESLint configuration
+### Features
+- Built with **Vite + React** for fast dev/build.  
+- Chat interface styled with **SCSS**.  
+- API integration via `chatApi.js`.  
+- Maintains session ID for contextual queries.  
+- Supports:
+  - Sending queries to `/chat` endpoint.  
+  - Displaying responses in real-time.  
+  - Viewing and maintaining chat history per session.  
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## ⚡ Tech Stack
+
+1. **React + Vite** — Frontend framework and build tool.  
+2. **Axios** — For API calls to the backend.  
+3. **SCSS** — Styling for chat interface.  
+4. **JavaScript (ES6+)** — Core logic.  
+
+Other Tools: ESLint (linting).  
+
+## 📂 Folder Structure
+```
+Frontend/
+├── node_modules/ # Dependencies
+├── public/ # Static assets
+├── src/
+│ ├── api/ # API integration
+│ │ └── chatApi.js
+│ │
+│ ├── components/ # React components
+│ │ └── Chat.jsx # Chat UI component
+│ │
+│ ├── styles/ # Stylesheets
+│ │ └── Chat.scss # Chat styling
+│ │
+│ ├── App.jsx # Root React component
+│ ├── main.jsx # Entry point
+│ └── index.css # Global styles
+│
+├── .env # Environment variables
+├── .env.example # Sample env config
+├── .gitignore
+├── eslint.config.js # Linting rules
+├── index.html # App HTML template
+├── package.json
+├── package-lock.json
+├── vite.config.js # Vite configuration
+└── README.md
+
+```
+
+
+# ⚙️ Installation & How to Run
+
+## Prerequisites
+- Node.js 18+  
+- npm / yarn / pnpm  
+- Git  
+
+---
+
+## 📥 Clone and Install 
+
+- Clone the repo into your directory  
+- Install all dependencies using `npm install` or `yarn install`  
+- Create a `.env` file in the root folder (same level as `package.json`)  
+  - Copy variables from `.env.example`  
+  
+
+---
+
+## 🚀 Run the Project  
+
+- Run `npm run dev` to start development server  
+- Run `npm run build` to create production build  
+-  
+
+🎉 **Hurray! Your chatbot frontend is live...**
+
+---
+
+**Note:**  
+- Make sure your **backend server** is running (locally or deployed).  
+- Update `.env` with the correct backend API URL before running.
+
+## 🖼️ Demo
+
+### Chat Interface
+![Chat UI Demo](./screenshots/chat-ui.png)
