@@ -154,7 +154,7 @@ function Chat() {
                         value={input}
                         onChange={(e) => setInput(e.target.value)}
                         placeholder="Ask about today's headlines..."
-                        disabled={isLoading}
+                        
                     />
                     <button className="send-button" type="submit" disabled={isLoading || !input.trim()}>
                         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" /></svg>
