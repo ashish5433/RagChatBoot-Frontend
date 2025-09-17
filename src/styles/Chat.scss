@@ -3,7 +3,7 @@
 $bg-gradient-start: #0b0714;
 $bg-gradient-end:   #180b2f;
 $user-bubble-bg:    #c0309cc1;
-$user-bubble-text:#111;
+$user-bubble-text:white;
 $bot-bubble-bg:rgba(50, 27, 71, 0.603);
 $bot-bubble-text:#f6f0ff;
 $accent-1:#be7da8;
@@ -14,7 +14,7 @@ $text-secondary: #9A9AA6;
 $glass-border: rgba(255,255,255,0.06);
 $shadow: 0 12px 40px rgba(2,6,23,0.6);
 
-/* ---------- Base ---------- */
+
 body {
   font-family: $primary-font;
   margin: 0;
@@ -29,9 +29,9 @@ body {
   -webkit-font-smoothing:antialiased;
 }
 
-/* ---------- Chat Container (positioning context) ---------- */
+
 .chat-container {
-  position: relative; /* important for absolute footer */
+  position: relative; 
   width: 900px;
   height: 750px;
   max-width: 95vw;
@@ -47,7 +47,6 @@ body {
   box-shadow: $shadow;
 }
 
-/* full viewport on small screens */
 @media (max-width: 920px) {
   .chat-container {
     width:100vw;
@@ -56,7 +55,6 @@ body {
   }
 }
 
-/* ---------- Header ---------- */
 .chat-header {
   display: flex;
   align-items: center;
@@ -116,16 +114,18 @@ body {
   flex-shrink: 0;
 
   .briefing-btn {
+    width: 40px;
+    height: 40px;
     display: inline-flex;
     align-items: center;
-    gap: 10px;
+    justify-content: center;
     padding: 10px 12px;
     border-radius: 999px;
     background-color: transparent;
     border: 2px solid rgb(138, 7, 7);
     color: $text-primary;
     cursor: pointer;
-    font-weight: 600;
+    font-weight: 800;
     transition: transform .3s ease, box-shadow .12s ease;
     box-shadow: 0 8px 18px rgba(153, 84, 168, 0.08);
     &:hover {
@@ -136,7 +136,7 @@ body {
   }
 }
 
-/* ---------- Message list: scrollable; leave space for footer ---------- */
+
 .message-list {
   flex:1 1 auto;
   overflow-y:auto;
@@ -146,16 +146,13 @@ body {
   gap:16px;
   -webkit-overflow-scrolling: touch;
 
-  /* Keep last messages visible above footer */
   padding-bottom: calc(84px + env(safe-area-inset-bottom));
 
-  /* hide scrollbars */
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE 10+ */
-  &::-webkit-scrollbar { display: none; } /* Chrome/Safari/Edge */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar { display: none; } 
 }
 
-/* ---------- Messages ---------- */
 .message-wrapper {
   display:flex;
   width:100%;
@@ -164,7 +161,6 @@ body {
   animation:fadeIn .22s ease-out;
 }
 
-/* Assistant (left) */
 .message-wrapper.assistant {
   justify-content:flex-start;
   flex-direction: row;
@@ -176,7 +172,6 @@ body {
   text-align: left;
 }
 
-/* User (right) */
 .message-wrapper.user {
   justify-content:flex-end;
   flex-direction: row-reverse;
@@ -191,7 +186,7 @@ body {
   text-align: right;
 }
 
-/* Avatar */
+
 .avatar {
   width:40px;
   height:40px;
@@ -203,7 +198,6 @@ body {
   svg { width:20px; height:20px; color:$text-primary; }
 }
 
-/* Bubble */
 .message {
   display:inline-block;
   padding:12px 10px;
@@ -224,7 +218,6 @@ body {
   border-top-left-radius: 14px;
 }
 
-/* ---------- Typing Indicator ---------- */
 .typing-indicator-wrapper {
   display: flex;
   gap: 12px;
@@ -279,7 +272,6 @@ body {
   white-space: normal;
 }
 
-/* Skeleton */
 .skeleton-message {
   margin-top: 6px;
   background: linear-gradient(90deg, rgba(255,255,255,0.015), rgba(255,255,255,0.02));
@@ -310,9 +302,8 @@ body {
   100% { opacity: 1; transform: translateY(0); }
 }
 
-/* ---------- Input Footer (pinned inside container) ---------- */
 .input-footer-container {
-  position: absolute; /* pinned to bottom of .chat-container */
+  position: absolute; 
   left: 0;
   right: 0;
   bottom: 0;
@@ -324,7 +315,6 @@ body {
   box-shadow: 0 -10px 30px rgba(2,6,23,0.25);
 }
 
-/* Input layout */
 .input-area {
   display:flex;
   gap:10px;
@@ -361,7 +351,6 @@ body {
 }
 .footer-text { text-align:center; font-size:0.75rem; color:$text-secondary; margin-top:8px; }
 
-/* ---------- Small screen tweaks ---------- */
 @media (max-width: 720px) {
   .title-group h1 { max-width: 160px; font-size: 1rem; }
   .logo { width:44px; height:44px; }
@@ -370,6 +359,5 @@ body {
   .message-list { padding: 18px; padding-bottom: calc(104px + env(safe-area-inset-bottom)); }
 }
 
-/* ---------- Animations ---------- */
 @keyframes fadeIn { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:none; } }
 @keyframes bounceBall { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-12px); } }
