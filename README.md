@@ -92,6 +92,8 @@ Frontend/
 - Make sure your **backend server** is running (locally or deployed).  
 - Update `.env` with the correct backend API URL before running.
 
+---
+
 ## 🖼️ Demo
 
 ### Chat Interface
