@@ -58,6 +58,75 @@ Frontend/
 
 ```
 
+## 🏗️ Architecture
+
+```mermaid
+flowchart TD
+    A["Site Loads"] ==> B{"Check localStorage for sessionId"}
+    B == No sessionId ==> C["Create sessionId, Save"]
+    B == sessionId exists ==> D["GET /api/session/:sessionId/history"]
+    C ==> D
+    D ==> E["Render history messages in chat area"]
+    F["User Sends Message"] ==> G{"Form submit"}
+    G == Prevent double sends ==> H["Append user message to messages"]
+    H ==> I["Append assistant placeholder + show Loader"]
+    I ==> J["POST /api/chat/stream {sessionId, query}"]
+    J == Server streams chunks ==> K["onChunk: append chunk to assistant message"]
+    K ==> J
+    J == Server finishes ==> L["Client updates assistant message (final), saves message ids"]
+    L ==> M["Scroll to bottom"]
+    N["User Resets Session"] ==> O["POST /api/session/:sessionId/reset"]
+    O ==> P["Server clears Redis session"]
+    P ==> Q["Client clears UI, Creates new sessionId"]
+
+    A@{ shape: rounded}
+    C@{ shape: rounded}
+    D@{ shape: rounded}
+    E@{ shape: rounded}
+    F@{ shape: rounded}
+    H@{ shape: rounded}
+    I@{ shape: rounded}
+    J@{ shape: rounded}
+    K@{ shape: rounded}
+    L@{ shape: rounded}
+    M@{ shape: rounded}
+    N@{ shape: rounded}
+    O@{ shape: rounded}
+    P@{ shape: rounded}
+    Q@{ shape: rounded}
+     A:::Pine
+     A:::Rose
+     B:::Aqua
+     C:::Sky
+     D:::Sky
+     E:::Sky
+     F:::Rose
+     G:::Aqua
+     H:::Sky
+     I:::Rose
+     I:::Sky
+     J:::Aqua
+     J:::Sky
+     K:::Sky
+     L:::Sky
+     M:::Sky
+     N:::Rose
+     O:::Sky
+     P:::Sky
+     Q:::Sky
+    classDef Pine stroke-width:1px, stroke-dasharray:none, stroke:#254336, fill:#27654A, color:#FFFFFF
+    classDef Aqua stroke-width:1px, stroke-dasharray:none, stroke:#46EDC8, fill:#DEFFF8, color:#378E7A
+    classDef Sky stroke-width:1px, stroke-dasharray:none, stroke:#374D7C, fill:#E2EBFF, color:#374D7C
+    classDef Rose stroke-width:1px, stroke-dasharray:none, stroke:#FF5978, fill:#FFDFE5, color:#8E2236
+    style C color:#000000,stroke:#2962FF
+    style D stroke:#2962FF
+    style H stroke:#2962FF
+    style P stroke:#2962FF
+    linkStyle default stroke:#AA00FF
+
+
+```
+
 
 # ⚙️ Installation & How to Run
 
