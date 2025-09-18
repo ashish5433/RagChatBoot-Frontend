@@ -7,6 +7,7 @@ import '../styles/Chat.scss';
 function Chat() {
     const [sessionId, setSessionId] = useState('');
     const [messages, setMessages] = useState([]);
+    const [historyLoaded, setHistoryLoaded] = useState(false);
     const [input, setInput] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const messageListRef = useRef(null);
@@ -20,7 +21,7 @@ function Chat() {
         setSessionId(currentSessionId);
 
         const loadHistory = async (id) => {
-            setIsLoading(true);
+            setHistoryLoaded(true);
             try {
                 const historyMessages = await fetchHistory(id);
                 setMessages(historyMessages);
@@ -28,7 +29,7 @@ function Chat() {
                 console.error('Could not load history for this session.', error);
                 setMessages([]);
             } finally {
-                setIsLoading(false);
+                setHistoryLoaded(false);
             }
         };
         loadHistory(currentSessionId);
@@ -43,16 +44,12 @@ function Chat() {
     const handleSendMessage = async (e) => {
         e.preventDefault();
         if (!input.trim() || isLoading) return;
-
         const userMessage = { role: 'user', text: input };
         const currentInput = input;
         setMessages(prev => [...prev, userMessage]);
         setInput('');
         setIsLoading(true);
-
-        // append assistant placeholder (so Loader can show)
         setMessages(prev => [...prev, { role: 'assistant', text: '' }]);
-
         try {
             await streamChatResponse({
                 sessionId,
@@ -141,7 +138,7 @@ function Chat() {
                     );
                 })}
 
-                {isLoading && messages[messages.length - 1]?.role === 'assistant' && !messages[messages.length - 1]?.text && (
+                {(historyLoaded || isLoading ) && messages[messages.length - 1]?.role === 'assistant' && !messages[messages.length - 1]?.text && (
                     <Loader />
                 )}
 
